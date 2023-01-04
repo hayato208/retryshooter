@@ -17,6 +17,8 @@ public class StatusButton : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI m_goldText; // Gold表示用
 
+    public TextMeshProUGUI m_hpMaxText; // hp表示用
+
     [SerializeField]
     public Text text; // 
 
@@ -268,6 +270,9 @@ public class StatusButton : MonoBehaviour
                 }
             }
         }
+        // 最大HP表示
+        m_hpMaxText.text = "MAX HP:" + sm.m_hpMax;
+
         // 所持GOLD表示
         m_goldText.text = "GOLD:" + sm.m_gold;
     }

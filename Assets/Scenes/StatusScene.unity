@@ -588,6 +588,7 @@ MonoBehaviour:
   m_hpMax: 0
   m_gold: 0
   m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 129002363}
   text: {fileID: 0}
 --- !u!1 &319962353
 GameObject:
@@ -1174,6 +1175,7 @@ MonoBehaviour:
   m_hpMax: 0
   m_gold: 0
   m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
 --- !u!1 &823618310
 GameObject:
@@ -1465,6 +1467,7 @@ MonoBehaviour:
   m_hpMax: 0
   m_gold: 0
   m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
 --- !u!1 &1136869687
 GameObject:
@@ -1621,6 +1624,7 @@ MonoBehaviour:
   m_hpMax: 0
   m_gold: 0
   m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
 --- !u!1 &1196634812
 GameObject:
@@ -1819,6 +1823,7 @@ MonoBehaviour:
   m_hpMax: 0
   m_gold: 0
   m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
 --- !u!1 &1329371981
 GameObject:
@@ -2314,6 +2319,7 @@ MonoBehaviour:
   m_hpMax: 0
   m_gold: 0
   m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
 --- !u!1 &1586700208
 GameObject:

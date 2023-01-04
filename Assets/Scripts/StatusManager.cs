@@ -96,13 +96,13 @@ public class StatusManager : MonoBehaviour
         while (m_shotSpeed <= 0.5)
         {
             // 1レベル当たりの上昇量
-            float boostPerPiece = (float)(0.1 + 0.025 * count);
+            float boostPerPiece = (float)(0.1 + 0.05 * count);
 
             if ((Mathf.Approximately(m_shotSpeed, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
                 var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
-                ss.m_shotSpeedGoldText.text = (int)(100 * Mathf.Pow(2, count++)) + "GOLDでショットスピード強化";
+                ss.m_shotSpeedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショットスピード強化";
                 break;
             }
             else
@@ -132,18 +132,10 @@ public class StatusManager : MonoBehaviour
 
             if ((Mathf.Approximately(m_shotCount, boostPerPiece)))
             {
-                if (m_gold >= 200 * Mathf.Pow(2, count))
-                {
-                    // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
-                    ss.m_shotCountGoldText.text = (int)(200 * Mathf.Pow(2, count++)) + "GOLDでショット数強化";
-                    break;
-                }
-                else
-                {
-                    // GOLD不足
-                    break;
-                }
+                // buttonの消費GOLD更新
+                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+                ss.m_shotCountGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDでショット数強化";
+                break;
             }
             else
             {
@@ -157,8 +149,6 @@ public class StatusManager : MonoBehaviour
                 }
             }
         }
-        // 所持GOLD表示
-        m_goldText.text = "GOLD:" + m_gold;
     }
 
     public void PrintShotInterval()
@@ -173,18 +163,10 @@ public class StatusManager : MonoBehaviour
 
             if ((Mathf.Approximately(m_shotInterval, boostPerPiece)))
             {
-                if (m_gold >= 100 * Mathf.Pow(2, count))
-                {
-                    // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
-                    ss.m_shotIntervalGoldText.text = (int)(100 * Mathf.Pow(2, count++)) + "GOLDでショット間隔短縮";
-                    break;
-                }
-                else
-                {
-                    // GOLD不足
-                    break;
-                }
+                // buttonの消費GOLD更新
+                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+                ss.m_shotIntervalGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショット間隔短縮";
+                break;
             }
             else
             {
@@ -198,8 +180,6 @@ public class StatusManager : MonoBehaviour
                 }
             }
         }
-        // 所持GOLD表示
-        m_goldText.text = "GOLD:" + m_gold;
     }
 
     public void PrintHpMaxCount()
@@ -214,18 +194,10 @@ public class StatusManager : MonoBehaviour
 
             if ((Mathf.Approximately(m_hpMax, boostPerPiece)))
             {
-                if (m_gold >= 200 * Mathf.Pow(2, count))
-                {
-                    // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
-                    ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count++)) + "GOLDで最大HP強化";
-                    break;
-                }
-                else
-                {
-                    // GOLD不足
-                    break;
-                }
+                // buttonの消費GOLD更新
+                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+                ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count++)) + "GOLDで最大HP強化";
+                break;
             }
             else
             {
@@ -239,8 +211,6 @@ public class StatusManager : MonoBehaviour
                 }
             }
         }
-        // 所持GOLD表示
-        m_goldText.text = "GOLD:" + m_gold;
     }
 
     public void StatusScene()
