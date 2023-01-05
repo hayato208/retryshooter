@@ -29,10 +29,14 @@ public class StatusButton : MonoBehaviour
         // StatusManagerコンポーネント取得
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
+        // StatusSceneコンポーネント取得
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (sm.m_speed <= 0.5)
+
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(0.05 + 0.025 * count);
@@ -46,10 +50,9 @@ public class StatusButton : MonoBehaviour
                     sm.m_gold -= (int)(100 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                     // なぜかcount余分にインクリメントする必要がある
                     count++;
-                    ss.m_speedGoldText.text = (int)(100 * Mathf.Pow(2, count++)) + "GOLDで自機スピード強化";
+                    ss.m_speedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDで自機スピード強化";
                     break;
                 }
                 else
@@ -58,18 +61,15 @@ public class StatusButton : MonoBehaviour
                     break;
                 }
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
         }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_speedGoldText.text = "最大強化です";
+        }
+
         // 所持GOLD表示
         m_goldText.text = "GOLD:" + sm.m_gold;
     }
@@ -79,13 +79,17 @@ public class StatusButton : MonoBehaviour
         // StatusManagerコンポーネント取得
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
+        // StatusSceneコンポーネント取得
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (sm.m_shotSpeed <= 0.5)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(0.1 + 0.05 * count);
+
 
             if ((Mathf.Approximately(sm.m_shotSpeed, boostPerPiece)))
             {
@@ -96,10 +100,9 @@ public class StatusButton : MonoBehaviour
                     sm.m_gold -= (int)(100 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                     // なぜかcount余分にインクリメントする必要がある
                     count++;
-                    ss.m_shotSpeedGoldText.text = (int)(100 * Mathf.Pow(2, count++)) + "GOLDでショットスピード強化";
+                    ss.m_shotSpeedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショットスピード強化";
                     break;
                 }
                 else
@@ -108,18 +111,15 @@ public class StatusButton : MonoBehaviour
                     break;
                 }
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
         }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_shotSpeedGoldText.text = "最大強化です";
+        }
+
         // 所持GOLD表示
         m_goldText.text = "GOLD:" + sm.m_gold;
     }
@@ -129,10 +129,13 @@ public class StatusButton : MonoBehaviour
         // StatusManagerコンポーネント取得
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
+        // StatusSceneコンポーネント取得
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (sm.m_shotCount <= 6)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(1 + 1 * count);
@@ -146,10 +149,9 @@ public class StatusButton : MonoBehaviour
                     sm.m_gold -= (int)(200 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                     // なぜかcount余分にインクリメントする必要がある
                     count++;
-                    ss.m_shotCountGoldText.text = (int)(200 * Mathf.Pow(2, count++)) + "GOLDでショット数強化";
+                    ss.m_shotCountGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDでショット数強化";
                     break;
                 }
                 else
@@ -158,18 +160,15 @@ public class StatusButton : MonoBehaviour
                     break;
                 }
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
         }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_shotCountGoldText.text = "最大強化です";
+        }
+
         // 所持GOLD表示
         m_goldText.text = "GOLD:" + sm.m_gold;
     }
@@ -179,10 +178,13 @@ public class StatusButton : MonoBehaviour
         // StatusManagerコンポーネント取得
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
+        // StatusSceneコンポーネント取得
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (m_shotInterval <= 2)
+             while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(2 - 0.3 * count);
@@ -196,10 +198,9 @@ public class StatusButton : MonoBehaviour
                     sm.m_gold -= (int)(100 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                     // なぜかcount余分にインクリメントする必要がある
                     count++;
-                    ss.m_shotIntervalGoldText.text = (int)(100 * Mathf.Pow(2, count++)) + "GOLDでショット間隔短縮";
+                    ss.m_shotIntervalGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショット間隔短縮";
                     break;
                 }
                 else
@@ -208,18 +209,15 @@ public class StatusButton : MonoBehaviour
                     break;
                 }
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
         }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_shotIntervalGoldText.text = "最大強化です";
+        }
+
         // 所持GOLD表示
         m_goldText.text = "GOLD:" + sm.m_gold;
     }
@@ -229,10 +227,13 @@ public class StatusButton : MonoBehaviour
         // StatusManagerコンポーネント取得
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
+        // StatusSceneコンポーネント取得
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (sm.m_hpMax <= 8)
+           while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(3 + 1 * count);
@@ -246,10 +247,8 @@ public class StatusButton : MonoBehaviour
                     sm.m_gold -= (int)(200 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
-                    var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
-                    // なぜかcount余分にインクリメントする必要がある
                     count++;
-                    ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count++)) + "GOLDで最大HP強化";
+                    ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDで最大HP強化";
                     break;
                 }
                 else
@@ -258,18 +257,15 @@ public class StatusButton : MonoBehaviour
                     break;
                 }
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
         }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_hpMaxGoldText.text = "最大強化です";
+        }
+
         // 最大HP表示
         m_hpMaxText.text = "MAX HP:" + sm.m_hpMax;
 
