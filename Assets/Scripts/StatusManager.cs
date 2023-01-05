@@ -61,15 +61,16 @@ public class StatusManager : MonoBehaviour
         // 繰り返しカウント
         count = 0;
 
-        while (m_speed <= 0.5)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(0.05 + 0.025 * count);
 
+            var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
             if ((Mathf.Approximately(m_speed, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
-                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                 ss.m_speedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDで自機スピード強化";
                 break;
             }
@@ -77,10 +78,11 @@ public class StatusManager : MonoBehaviour
             {
                 // いわゆるレベルの代わり
                 count++;
-                if (count >= 10)
+                if (count >= 6)
                 {
                     // 最大レベル
                     // 無限ループ防止
+                    ss.m_speedGoldText.text = "最大強化です";
                     break;
                 }
             }
@@ -93,15 +95,16 @@ public class StatusManager : MonoBehaviour
         // 繰り返しカウント
         count = 0;
 
-        while (m_shotSpeed <= 0.5)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(0.1 + 0.05 * count);
 
+            var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
             if ((Mathf.Approximately(m_shotSpeed, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
-                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                 ss.m_shotSpeedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショットスピード強化";
                 break;
             }
@@ -109,10 +112,11 @@ public class StatusManager : MonoBehaviour
             {
                 // いわゆるレベルの代わり
                 count++;
-                if (count >= 10)
+                if (count >= 6)
                 {
                     // 最大レベル
                     // 無限ループ防止
+                    ss.m_shotSpeedGoldText.text = "最大強化です";
                     break;
                 }
             }
@@ -122,10 +126,12 @@ public class StatusManager : MonoBehaviour
 
     public void PrintShotCount()
     {
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (m_shotCount <= 6)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(1 + 1 * count);
@@ -133,21 +139,16 @@ public class StatusManager : MonoBehaviour
             if ((Mathf.Approximately(m_shotCount, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
-                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                 ss.m_shotCountGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDでショット数強化";
                 break;
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
+        }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_shotCountGoldText.text = "最大強化です";
         }
     }
 
@@ -156,15 +157,16 @@ public class StatusManager : MonoBehaviour
         // 繰り返しカウント
         count = 0;
 
-        while (m_shotInterval <= 2)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(2 - 0.3 * count);
 
+            var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
             if ((Mathf.Approximately(m_shotInterval, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
-                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
                 ss.m_shotIntervalGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショット間隔短縮";
                 break;
             }
@@ -172,10 +174,11 @@ public class StatusManager : MonoBehaviour
             {
                 // いわゆるレベルの代わり
                 count++;
-                if (count >= 10)
+                if (count >= 6)
                 {
                     // 最大レベル
                     // 無限ループ防止
+                    ss.m_shotIntervalGoldText.text = "最大強化です";
                     break;
                 }
             }
@@ -184,10 +187,12 @@ public class StatusManager : MonoBehaviour
 
     public void PrintHpMaxCount()
     {
+        var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
+
         // 繰り返しカウント
         count = 0;
 
-        while (m_hpMax <= 8)
+        while (count < 6)
         {
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(3 + 1 * count);
@@ -195,21 +200,16 @@ public class StatusManager : MonoBehaviour
             if ((Mathf.Approximately(m_hpMax, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
-                var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
-                ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count++)) + "GOLDで最大HP強化";
+                ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDで最大HP強化";
                 break;
             }
-            else
-            {
-                // いわゆるレベルの代わり
-                count++;
-                if (count >= 10)
-                {
-                    // 最大レベル
-                    // 無限ループ防止
-                    break;
-                }
-            }
+            count++;
+        }
+
+        // 最大レベル
+        if (count >= 6)
+        {
+            ss.m_hpMaxGoldText.text = "最大強化です";
         }
     }
 
