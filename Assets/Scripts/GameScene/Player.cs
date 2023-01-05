@@ -244,7 +244,6 @@ public class Player : MonoBehaviour
         // ゴールドを表示
         m_goldText.text = "GOLD:" + m_gold;
 
-/*
         if (m_gold >= 10000)
         {
             // Type == Time の場合
@@ -256,7 +255,6 @@ public class Player : MonoBehaviour
             // ゲーム停止
             Time.timeScale = 0f;
         }
-        */
     }
 
     public void LevelUp(int gold)
