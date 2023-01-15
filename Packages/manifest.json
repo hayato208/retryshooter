@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.needle.compilation-visualizer": "https://github.com/needle-tools/compilation-visualizer.git",
     "com.nifcloud.mbaas.unity": "https://github.com/NIFCLOUD-mbaas/ncmb_unity.git?path=ncmb_unity/Assets",
     "com.spoiledcat.git": "1.0.12",
     "com.unity.collab-proxy": "1.17.7",
