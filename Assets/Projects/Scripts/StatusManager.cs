@@ -16,6 +16,8 @@ public class StatusManager : MonoBehaviour
 
     // Playerステータスここまで
 
+
+
     // 戦闘時間
     private int minute; // 戦闘時間：分
     private float seconds; // 戦闘時間：秒
