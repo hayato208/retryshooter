@@ -18,9 +18,17 @@ public class TimeManager : MonoBehaviour
     private TextMeshProUGUI m_gameClearText; // ゲームクリア表示用
     private GameObject m_gameClear; // ゲームクリア
 
+        // Unity再生時static変数初期化
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void Init()
+        {
+            minute = 0;
+            seconds = 0;
+        }
+
     // Start is called before the first frame update
     void Start()
-    {
+    {      
         /*
         minute = 0;
         seconds = 0f;
