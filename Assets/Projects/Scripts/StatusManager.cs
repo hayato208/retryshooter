@@ -16,14 +16,13 @@ public class StatusManager : MonoBehaviour
 
     // Playerステータスここまで
 
-
-
     // 戦闘時間
     private int minute; // 戦闘時間：分
     private float seconds; // 戦闘時間：秒
 
     // 戦闘時間ここまで
     private int count;
+    
 
     [SerializeField]
     public TextMeshProUGUI m_goldText; // Gold表示用
