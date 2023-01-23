@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement; // Sceneの切り替えに必要
 
 public class StatusManager : MonoBehaviour
 {
+    
     // Playerステータス
     public float m_speed; // 移動の速さ
     public float m_shotSpeed; // 弾の移動の速さ
