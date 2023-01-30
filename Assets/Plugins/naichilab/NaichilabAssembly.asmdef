@@ -1,0 +1,20 @@
+{
+    "name": "NaichilabAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9513fb608989a4bd6b072ad7d17f2299",
+        "GUID:8436a1d0967ea4eda878116e2704c048",
+        "GUID:e5558e0d2d507448aaf1be964f167360",
+        "GUID:d11559b78a2644357a34e0c72ff22ec8",
+        "GUID:1c9307e165d1485449968bded8ad48c6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
