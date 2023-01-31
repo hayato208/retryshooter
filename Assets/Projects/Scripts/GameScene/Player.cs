@@ -250,7 +250,7 @@ public class Player : MonoBehaviour
             int scoreTime = TimeManager.minute * 60 + (int)TimeManager.seconds;
 
             // Type == Number の場合
-            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(scoreTime);
+             naichilab.RankingLoader.Instance.SendScoreAndShowRanking(scoreTime);
 
             // ゲーム停止
             Time.timeScale = 0f;

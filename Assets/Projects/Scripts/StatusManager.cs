@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement; // Sceneの切り替えに必要
 
 public class StatusManager : MonoBehaviour
 {
+    
     // Playerステータス
     public float m_speed; // 移動の速さ
     public float m_shotSpeed; // 弾の移動の速さ
@@ -16,8 +17,6 @@ public class StatusManager : MonoBehaviour
 
     // Playerステータスここまで
 
-
-
     // 戦闘時間
     private int minute; // 戦闘時間：分
     private float seconds; // 戦闘時間：秒
@@ -25,6 +24,7 @@ public class StatusManager : MonoBehaviour
     // 戦闘時間ここまで
     private int count;
 
+    
     [SerializeField]
     public TextMeshProUGUI m_goldText; // Gold表示用
     public TextMeshProUGUI m_hpMaxText; // hp表示用
