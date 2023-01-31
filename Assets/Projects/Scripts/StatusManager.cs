@@ -6,16 +6,29 @@ using UnityEngine.SceneManagement; // Sceneの切り替えに必要
 
 public class StatusManager : MonoBehaviour
 {
-    
+
     // Playerステータス
+    /*
     public float m_speed; // 移動の速さ
     public float m_shotSpeed; // 弾の移動の速さ
     public int m_shotCount; // 弾の発射数
     public float m_shotInterval; // 弾の発射間隔（秒）
     public int m_hpMax; // HP の最大値
     public int m_gold; // 所持ゴールド
+    */
 
     // Playerステータスここまで
+
+    //Playerステータス移行後
+    public float playerSpeed; // 移動の速さ
+    public float playerShotSpeed; // 弾の移動の速さ
+    public float playerShotAngleRange; // 複数の弾を発射する時の角度
+    public int playerShotCount; // 弾の発射数
+    public float playerShotInterval; // 弾の発射間隔（秒）
+    public int playerHpMax; // HP の最大値
+    public int playerHp; // HP
+    public int playerGold; // 所持ゴールド
+    //Playerステータス移行後ここまで
 
     // 戦闘時間
     private int minute; // 戦闘時間：分
@@ -24,17 +37,18 @@ public class StatusManager : MonoBehaviour
     // 戦闘時間ここまで
     private int count;
 
-    
+
     [SerializeField]
     public TextMeshProUGUI m_goldText; // Gold表示用
     public TextMeshProUGUI m_hpMaxText; // hp表示用
     void Start()
     {
+        /*
         // 最大HP表示
-        m_hpMaxText.text = "MAX HP:" + m_hpMax;
+        m_hpMaxText.text = "MAX HP:" + playerHpMax;
 
         // 所持GOLD表示
-        m_goldText.text = "GOLD:" + m_gold;
+        m_goldText.text = "GOLD:" + playerGold;
 
         // speedButtonテキスト更新
         PrintBoostSpeed();
@@ -50,6 +64,7 @@ public class StatusManager : MonoBehaviour
 
         // hpMaxButtonテキスト更新
         PrintHpMaxCount();
+        */
     }
 
     // Update is called once per frame
@@ -70,7 +85,7 @@ public class StatusManager : MonoBehaviour
 
             var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
 
-            if ((Mathf.Approximately(m_speed, boostPerPiece)))
+            if ((Mathf.Approximately(playerSpeed, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
                 ss.m_speedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDで自機スピード強化";
@@ -104,7 +119,7 @@ public class StatusManager : MonoBehaviour
 
             var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
 
-            if ((Mathf.Approximately(m_shotSpeed, boostPerPiece)))
+            if ((Mathf.Approximately(playerShotSpeed, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
                 ss.m_shotSpeedGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショットスピード強化";
@@ -138,7 +153,7 @@ public class StatusManager : MonoBehaviour
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(1 + 1 * count);
 
-            if ((Mathf.Approximately(m_shotCount, boostPerPiece)))
+            if ((Mathf.Approximately(playerShotCount, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
                 ss.m_shotCountGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDでショット数強化";
@@ -166,7 +181,7 @@ public class StatusManager : MonoBehaviour
 
             var ss = GameObject.Find("StatusScene").GetComponent<StatusScene>();
 
-            if ((Mathf.Approximately(m_shotInterval, boostPerPiece)))
+            if ((Mathf.Approximately(playerShotInterval, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
                 ss.m_shotIntervalGoldText.text = (int)(100 * Mathf.Pow(2, count)) + "GOLDでショット間隔短縮";
@@ -199,7 +214,7 @@ public class StatusManager : MonoBehaviour
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(3 + 1 * count);
 
-            if ((Mathf.Approximately(m_hpMax, boostPerPiece)))
+            if ((Mathf.Approximately(playerHpMax, boostPerPiece)))
             {
                 // buttonの消費GOLD更新
                 ss.m_hpMaxGoldText.text = (int)(200 * Mathf.Pow(2, count)) + "GOLDで最大HP強化";
@@ -226,7 +241,7 @@ public class StatusManager : MonoBehaviour
     public void GameSceneLoaded(Scene next, LoadSceneMode mode)
     {
         var sm = GameObject.Find("Player").GetComponent<Player>();
-        sm.m_hpMax = m_hpMax;
+        sm.playerHpMax = playerHpMax;
 
         // ScoreManager登録
         // var sm = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();

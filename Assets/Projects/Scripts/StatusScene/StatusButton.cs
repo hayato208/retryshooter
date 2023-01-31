@@ -41,13 +41,13 @@ public class StatusButton : MonoBehaviour
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(0.05 + 0.025 * count);
 
-            if ((Mathf.Approximately(sm.m_speed, boostPerPiece)))
+            if ((Mathf.Approximately(sm.playerSpeed, boostPerPiece)))
             {
-                if (sm.m_gold >= 100 * Mathf.Pow(2, count))
+                if (sm.playerGold >= 100 * Mathf.Pow(2, count))
                 {
                     // レベルアップ
-                    sm.m_speed += (float)0.025;
-                    sm.m_gold -= (int)(100 * Mathf.Pow(2, count));
+                    sm.playerSpeed += (float)0.025;
+                    sm.playerGold -= (int)(100 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
                     // なぜかcount余分にインクリメントする必要がある
@@ -71,7 +71,7 @@ public class StatusButton : MonoBehaviour
         }
 
         // 所持GOLD表示
-        m_goldText.text = "GOLD:" + sm.m_gold;
+        m_goldText.text = "GOLD:" + sm.playerGold;
     }
 
     public void OnBoostShotSpeed()
@@ -91,13 +91,13 @@ public class StatusButton : MonoBehaviour
             float boostPerPiece = (float)(0.1 + 0.05 * count);
 
 
-            if ((Mathf.Approximately(sm.m_shotSpeed, boostPerPiece)))
+            if ((Mathf.Approximately(sm.playerShotSpeed, boostPerPiece)))
             {
-                if (sm.m_gold >= 100 * Mathf.Pow(2, count))
+                if (sm.playerGold >= 100 * Mathf.Pow(2, count))
                 {
                     // レベルアップ
-                    sm.m_shotSpeed += (float)0.05;
-                    sm.m_gold -= (int)(100 * Mathf.Pow(2, count));
+                    sm.playerShotSpeed += (float)0.05;
+                    sm.playerGold -= (int)(100 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
                     // なぜかcount余分にインクリメントする必要がある
@@ -121,7 +121,7 @@ public class StatusButton : MonoBehaviour
         }
 
         // 所持GOLD表示
-        m_goldText.text = "GOLD:" + sm.m_gold;
+        m_goldText.text = "GOLD:" + sm.playerGold;
     }
 
     public void OnBoostShotCount()
@@ -140,13 +140,13 @@ public class StatusButton : MonoBehaviour
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(1 + 1 * count);
 
-            if ((Mathf.Approximately(sm.m_shotCount, boostPerPiece)))
+            if ((Mathf.Approximately(sm.playerShotCount, boostPerPiece)))
             {
-                if (sm.m_gold >= 200 * Mathf.Pow(2, count))
+                if (sm.playerGold >= 200 * Mathf.Pow(2, count))
                 {
                     // レベルアップ
-                    sm.m_shotCount += 1;
-                    sm.m_gold -= (int)(200 * Mathf.Pow(2, count));
+                    sm.playerShotCount += 1;
+                    sm.playerGold -= (int)(200 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
                     // なぜかcount余分にインクリメントする必要がある
@@ -170,7 +170,7 @@ public class StatusButton : MonoBehaviour
         }
 
         // 所持GOLD表示
-        m_goldText.text = "GOLD:" + sm.m_gold;
+        m_goldText.text = "GOLD:" + sm.playerGold;
     }
 
     public void OnShotInterval()
@@ -189,13 +189,13 @@ public class StatusButton : MonoBehaviour
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(2 - 0.3 * count);
 
-            if ((Mathf.Approximately(sm.m_shotInterval, boostPerPiece)))
+            if ((Mathf.Approximately(sm.playerShotInterval, boostPerPiece)))
             {
-                if (sm.m_gold >= 100 * Mathf.Pow(2, count))
+                if (sm.playerGold >= 100 * Mathf.Pow(2, count))
                 {
                     // レベルアップ
-                    sm.m_shotInterval -= (float)0.3;
-                    sm.m_gold -= (int)(100 * Mathf.Pow(2, count));
+                    sm.playerShotInterval -= (float)0.3;
+                    sm.playerGold -= (int)(100 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
                     // なぜかcount余分にインクリメントする必要がある
@@ -219,7 +219,7 @@ public class StatusButton : MonoBehaviour
         }
 
         // 所持GOLD表示
-        m_goldText.text = "GOLD:" + sm.m_gold;
+        m_goldText.text = "GOLD:" + sm.playerGold;
     }
 
     public void OnBoosthpMax()
@@ -238,13 +238,13 @@ public class StatusButton : MonoBehaviour
             // 1レベル当たりの上昇量
             float boostPerPiece = (float)(3 + 1 * count);
 
-            if ((Mathf.Approximately(sm.m_hpMax, boostPerPiece)))
+            if ((Mathf.Approximately(sm.playerHpMax, boostPerPiece)))
             {
-                if (sm.m_gold >= 200 * Mathf.Pow(2, count))
+                if (sm.playerGold >= 200 * Mathf.Pow(2, count))
                 {
                     // レベルアップ
-                    sm.m_hpMax += 1;
-                    sm.m_gold -= (int)(200 * Mathf.Pow(2, count));
+                    sm.playerHpMax += 1;
+                    sm.playerGold -= (int)(200 * Mathf.Pow(2, count));
 
                     // buttonの消費GOLD更新
                     count++;
@@ -267,22 +267,24 @@ public class StatusButton : MonoBehaviour
         }
 
         // 最大HP表示
-        m_hpMaxText.text = "MAX HP:" + sm.m_hpMax;
+        m_hpMaxText.text = "MAX HP:" + sm.playerHpMax;
 
         // 所持GOLD表示
-        m_goldText.text = "GOLD:" + sm.m_gold;
+        m_goldText.text = "GOLD:" + sm.playerGold;
     }
 
     public void OnGameSceneClick()
     {
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
+    /*
         m_speed = sm.m_speed;
         m_shotSpeed = sm.m_shotSpeed;
         m_shotCount = sm.m_shotCount;
         m_shotInterval = sm.m_shotInterval;
         m_hpMax = sm.m_hpMax;
-        m_gold = sm.m_gold;
+        playerGold = sm.playerGold;
+    */
 
         StatusScene();
     }
@@ -302,6 +304,7 @@ public class StatusButton : MonoBehaviour
         // GameSceneのPlayerコンポーネント
         var Player = GameObject.Find("Player").GetComponent<Player>();
 
+        /*
         Player.m_speed = m_speed;
         Player.m_shotSpeed = m_shotSpeed;
         Player.m_shotAngleRange = m_shotAngleRange;
@@ -309,7 +312,8 @@ public class StatusButton : MonoBehaviour
         Player.m_shotInterval = m_shotInterval;
 
         Player.m_hpMax = m_hpMax;
-        Player.m_gold = m_gold;
+        Player.playerGold = playerGold;
+        */
 
         SceneManager.sceneLoaded -= GameSceneLoaded;
     }
