@@ -275,10 +275,12 @@ MonoBehaviour:
   m_shotSpeed: 0
   m_shotCount: 0
   m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerHpMax: 0
+  playerGold: 0
   m_speedGold: 0
-  m_speedGoldText: {fileID: 0}
+  m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 129002363}
+  PlayerSpeedButtonGoldText: {fileID: 0}
   m_shotSpeedGoldText: {fileID: 0}
   m_shotCountGoldText: {fileID: 0}
   m_shotIntervalGoldText: {fileID: 0}
@@ -580,13 +582,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotAngleRange: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerSpeed: 0
+  playerShotSpeed: 0
+  playerShotAngleRange: 0
+  playerShotCount: 0
+  playerShotInterval: 0
+  playerHpMax: 0
+  playerHp: 0
+  playerGold: 0
   m_goldText: {fileID: 1928294062}
   m_hpMaxText: {fileID: 129002363}
   text: {fileID: 0}
@@ -862,10 +865,12 @@ MonoBehaviour:
   m_shotSpeed: 0
   m_shotCount: 0
   m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerHpMax: 0
+  playerGold: 0
   m_speedGold: 0
-  m_speedGoldText: {fileID: 823618312}
+  m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 129002363}
+  PlayerSpeedButtonGoldText: {fileID: 823618312}
   m_shotSpeedGoldText: {fileID: 1844908277}
   m_shotCountGoldText: {fileID: 1373171086}
   m_shotIntervalGoldText: {fileID: 2133970102}
@@ -883,7 +888,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &455461752
 GameObject:
@@ -1167,13 +1172,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotAngleRange: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerSpeed: 0
+  playerShotSpeed: 0
+  playerShotAngleRange: 0
+  playerShotCount: 0
+  playerShotInterval: 0
+  playerHpMax: 0
+  playerHp: 0
+  playerGold: 0
   m_goldText: {fileID: 1928294062}
   m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
@@ -1189,7 +1195,7 @@ GameObject:
   - component: {fileID: 823618313}
   - component: {fileID: 823618312}
   m_Layer: 5
-  m_Name: BoostSpeedText
+  m_Name: PlayerSpeedEnhancementButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,7 +1332,7 @@ GameObject:
   - component: {fileID: 984767977}
   - component: {fileID: 984767976}
   m_Layer: 5
-  m_Name: BoostSpeed
+  m_Name: PlayerSpeedEnhancementButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,8 +1404,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 984767979}
-        m_TargetAssemblyTypeName: StatusButton, Assembly-CSharp
-        m_MethodName: OnBoostSpeed
+        m_TargetAssemblyTypeName: StatusButton, ProjectsScriptAssembly
+        m_MethodName: OnPlayerSpeedEnhancementButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1459,13 +1465,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotAngleRange: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerSpeed: 0
+  playerShotSpeed: 0
+  playerShotAngleRange: 0
+  playerShotCount: 0
+  playerShotInterval: 0
+  playerHpMax: 0
+  playerHp: 0
+  playerGold: 0
   m_goldText: {fileID: 1928294062}
   m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
@@ -1616,13 +1623,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotAngleRange: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerSpeed: 0
+  playerShotSpeed: 0
+  playerShotAngleRange: 0
+  playerShotCount: 0
+  playerShotInterval: 0
+  playerHpMax: 0
+  playerHp: 0
+  playerGold: 0
   m_goldText: {fileID: 1928294062}
   m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
@@ -1636,7 +1644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196634813}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StatusButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1815,13 +1823,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotAngleRange: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerSpeed: 0
+  playerShotSpeed: 0
+  playerShotAngleRange: 0
+  playerShotCount: 0
+  playerShotInterval: 0
+  playerHpMax: 0
+  playerHp: 0
+  playerGold: 0
   m_goldText: {fileID: 1928294062}
   m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
@@ -2259,13 +2268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotAngleRange: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerSpeed: 0
+  playerShotSpeed: 0
+  playerShotAngleRange: 0
+  playerShotCount: 0
+  playerShotInterval: 0
+  playerHpMax: 0
+  playerHp: 0
+  playerGold: 0
   m_goldText: {fileID: 1928294062}
   m_hpMaxText: {fileID: 0}
   text: {fileID: 0}
@@ -2395,7 +2405,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1594953902
 GameObject:
@@ -2811,10 +2821,12 @@ MonoBehaviour:
   m_shotSpeed: 0
   m_shotCount: 0
   m_shotInterval: 0
-  m_hpMax: 0
-  m_gold: 0
+  playerHpMax: 0
+  playerGold: 0
   m_speedGold: 0
-  m_speedGoldText: {fileID: 0}
+  m_goldText: {fileID: 1928294062}
+  m_hpMaxText: {fileID: 129002363}
+  PlayerSpeedButtonGoldText: {fileID: 0}
   m_shotSpeedGoldText: {fileID: 0}
   m_shotCountGoldText: {fileID: 0}
   m_shotIntervalGoldText: {fileID: 0}
@@ -2873,6 +2885,98 @@ PrefabInstance:
     - target: {fileID: 2932840973445811211, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerHp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerGold
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerHpMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerIntialHpMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerIntialSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotAngleRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerIntialShotCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerIntialShotSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerHpMaxEnhancement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerSpeedEnhancement
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerIntialShotInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerHpMaxEnhancementGold
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotCountEnhancement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotSpeedEnhancement
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerSpeedEnhancementGold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotIntervalEnhancement
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotCountEnhancementGold
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotSpeedEnhancementGold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotIntervalEnhancementGold
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}

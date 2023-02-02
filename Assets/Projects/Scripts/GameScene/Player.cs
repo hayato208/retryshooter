@@ -232,7 +232,9 @@ public class Player : MonoBehaviour
         sm.m_shotInterval = m_shotInterval; // 弾の発射間隔（秒）
         sm.m_hpMax = m_hpMax; // HP の最大値
         */
-        sm.playerGold = playerGold; // 所持ゴールド
+        sm.playerSpeed=playerSpeed;
+        sm.playerShotSpeed=playerShotSpeed;
+        sm.playerGold = playerGold; 
 
         // Playerステータスここまで
         // 戦闘時間
