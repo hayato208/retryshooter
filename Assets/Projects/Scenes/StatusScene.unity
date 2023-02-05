@@ -132,11 +132,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 129002362}
-  - component: {fileID: 129002365}
   - component: {fileID: 129002364}
   - component: {fileID: 129002363}
   m_Layer: 5
-  m_Name: HP
+  m_Name: PlayerHpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,32 +258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129002361}
   m_CullTransparentMesh: 1
---- !u!114 &129002365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129002361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9307d21e37bd9b54289a90da41f62a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  playerHpMax: 0
-  playerGold: 0
-  m_speedGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 129002363}
-  PlayerSpeedButtonGoldText: {fileID: 0}
-  m_shotSpeedGoldText: {fileID: 0}
-  m_shotCountGoldText: {fileID: 0}
-  m_shotIntervalGoldText: {fileID: 0}
-  m_hpMaxGoldText: {fileID: 0}
 --- !u!1 &272957512
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +422,7 @@ GameObject:
   - component: {fileID: 316404624}
   - component: {fileID: 316404623}
   m_Layer: 5
-  m_Name: BoostHpMax
+  m_Name: PlayerHpMaxEnhancementButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,11 +442,11 @@ RectTransform:
   m_Children:
   - {fileID: 319962354}
   m_Father: {fileID: 1196634813}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: 60}
+  m_AnchoredPosition: {x: -120.000015, y: 60}
   m_SizeDelta: {x: 240, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316404623
@@ -521,8 +494,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 316404626}
-        m_TargetAssemblyTypeName: StatusButton, Assembly-CSharp
-        m_MethodName: OnBoosthpMax
+        m_TargetAssemblyTypeName: StatusButton, ProjectsScriptAssembly
+        m_MethodName: OnPlayerHpMaxEnhancementButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -582,17 +555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerShotSpeed: 0
-  playerShotAngleRange: 0
-  playerShotCount: 0
-  playerShotInterval: 0
-  playerHpMax: 0
-  playerHp: 0
-  playerGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 129002363}
-  text: {fileID: 0}
 --- !u!1 &319962353
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +567,7 @@ GameObject:
   - component: {fileID: 319962356}
   - component: {fileID: 319962355}
   m_Layer: 5
-  m_Name: BoostHpMaxText
+  m_Name: PlayerHpMaxEnhancementButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,20 +823,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9307d21e37bd9b54289a90da41f62a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  playerHpMax: 0
-  playerGold: 0
-  m_speedGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 129002363}
+  PlayerGoldText: {fileID: 1928294062}
+  PlayerHpMax: {fileID: 129002363}
+  PlayerShotSpeedButtonGoldText: {fileID: 1844908277}
+  PlayerShotIntervalButtonGoldText: {fileID: 2133970102}
   PlayerSpeedButtonGoldText: {fileID: 823618312}
-  m_shotSpeedGoldText: {fileID: 1844908277}
-  m_shotCountGoldText: {fileID: 1373171086}
-  m_shotIntervalGoldText: {fileID: 2133970102}
-  m_hpMaxGoldText: {fileID: 319962355}
+  PlayerHpMaxButtonGoldText: {fileID: 319962355}
+  PlayerShotCountButtonGoldText: {fileID: 1373171086}
 --- !u!4 &341111216
 Transform:
   m_ObjectHideFlags: 0
@@ -902,7 +857,7 @@ GameObject:
   - component: {fileID: 455461755}
   - component: {fileID: 455461754}
   m_Layer: 5
-  m_Name: TextMeshPro - Text
+  m_Name: MainSceneButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +994,7 @@ GameObject:
   - component: {fileID: 475147172}
   - component: {fileID: 475147171}
   m_Layer: 5
-  m_Name: BoostShotCount
+  m_Name: PlayerShotCountEnhancementButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1059,7 +1014,7 @@ RectTransform:
   m_Children:
   - {fileID: 1373171085}
   m_Father: {fileID: 1196634813}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1111,8 +1066,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 475147174}
-        m_TargetAssemblyTypeName: StatusButton, Assembly-CSharp
-        m_MethodName: OnBoostShotCount
+        m_TargetAssemblyTypeName: StatusButton, ProjectsScriptAssembly
+        m_MethodName: OnPlayerShotCountEnhancementButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1172,17 +1127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerShotSpeed: 0
-  playerShotAngleRange: 0
-  playerShotCount: 0
-  playerShotInterval: 0
-  playerHpMax: 0
-  playerHp: 0
-  playerGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &823618310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1296,7 @@ RectTransform:
   m_Children:
   - {fileID: 823618311}
   m_Father: {fileID: 1196634813}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1465,17 +1409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerShotSpeed: 0
-  playerShotAngleRange: 0
-  playerShotCount: 0
-  playerShotInterval: 0
-  playerHpMax: 0
-  playerHp: 0
-  playerGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &1136869687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1423,7 @@ GameObject:
   - component: {fileID: 1136869690}
   - component: {fileID: 1136869689}
   m_Layer: 5
-  m_Name: BoostShotSpeed
+  m_Name: PlayerShotSpeedEnhancementButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,7 +1443,7 @@ RectTransform:
   m_Children:
   - {fileID: 1844908276}
   m_Father: {fileID: 1196634813}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1562,8 +1495,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1136869692}
-        m_TargetAssemblyTypeName: StatusButton, Assembly-CSharp
-        m_MethodName: OnBoostShotSpeed
+        m_TargetAssemblyTypeName: StatusButton, ProjectsScriptAssembly
+        m_MethodName: OnPlayerShotSpeedEnhancementButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1623,17 +1556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerShotSpeed: 0
-  playerShotAngleRange: 0
-  playerShotCount: 0
-  playerShotInterval: 0
-  playerHpMax: 0
-  playerHp: 0
-  playerGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &1196634812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,12 +1584,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1241315259}
-  - {fileID: 984767975}
   - {fileID: 1136869688}
-  - {fileID: 475147170}
   - {fileID: 1395635885}
+  - {fileID: 984767975}
   - {fileID: 316404622}
+  - {fileID: 475147170}
+  - {fileID: 1241315259}
   m_Father: {fileID: 331002983}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1710,7 +1632,7 @@ RectTransform:
   m_Children:
   - {fileID: 455461753}
   m_Father: {fileID: 1196634813}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1823,17 +1745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerShotSpeed: 0
-  playerShotAngleRange: 0
-  playerShotCount: 0
-  playerShotInterval: 0
-  playerHpMax: 0
-  playerHp: 0
-  playerGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &1367919167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,7 +1825,7 @@ GameObject:
   - component: {fileID: 1373171087}
   - component: {fileID: 1373171086}
   m_Layer: 5
-  m_Name: BoostShotCountText
+  m_Name: PlayerShotCountEnhancementButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2135,7 +2046,7 @@ GameObject:
   - component: {fileID: 1395635887}
   - component: {fileID: 1395635886}
   m_Layer: 5
-  m_Name: BoostShotInterval
+  m_Name: PlayerShotIntervalEnhancementButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2155,7 +2066,7 @@ RectTransform:
   m_Children:
   - {fileID: 2133970101}
   m_Father: {fileID: 1196634813}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2207,8 +2118,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1395635889}
-        m_TargetAssemblyTypeName: StatusButton, Assembly-CSharp
-        m_MethodName: OnShotInterval
+        m_TargetAssemblyTypeName: StatusButton, ProjectsScriptAssembly
+        m_MethodName: OnPlayerShotIntervalEnhancementButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2268,17 +2179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7ae6c524c488b4bbd91161c6fd6c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerShotSpeed: 0
-  playerShotAngleRange: 0
-  playerShotCount: 0
-  playerShotInterval: 0
-  playerHpMax: 0
-  playerHp: 0
-  playerGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &1586700208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2403,7 @@ GameObject:
   - component: {fileID: 1844908278}
   - component: {fileID: 1844908277}
   m_Layer: 5
-  m_Name: BoostShotSpeedText
+  m_Name: PlayerShotSpeedEnhancementButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2635,12 +2535,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1928294060}
-  - component: {fileID: 1928294064}
   - component: {fileID: 1928294063}
   - component: {fileID: 1928294062}
   - component: {fileID: 1928294061}
   m_Layer: 5
-  m_Name: Gold
+  m_Name: PlayerGoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2805,32 +2704,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928294059}
   m_CullTransparentMesh: 1
---- !u!114 &1928294064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928294059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9307d21e37bd9b54289a90da41f62a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 0
-  m_shotSpeed: 0
-  m_shotCount: 0
-  m_shotInterval: 0
-  playerHpMax: 0
-  playerGold: 0
-  m_speedGold: 0
-  m_goldText: {fileID: 1928294062}
-  m_hpMaxText: {fileID: 129002363}
-  PlayerSpeedButtonGoldText: {fileID: 0}
-  m_shotSpeedGoldText: {fileID: 0}
-  m_shotCountGoldText: {fileID: 0}
-  m_shotIntervalGoldText: {fileID: 0}
-  m_hpMaxGoldText: {fileID: 0}
 --- !u!1001 &1956712750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2892,7 +2765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: playerGold
-      value: 2000
+      value: 80000
       objectReference: {fileID: 0}
     - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: playerHpMax
@@ -2923,6 +2796,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerHpMaxLevelMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerSpeedLevelMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: playerShotAngleRange
       value: 20
       objectReference: {fileID: 0}
@@ -2943,6 +2824,14 @@ PrefabInstance:
       value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotCountLevelMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotSpeedLevelMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: playerIntialShotInterval
       value: 2
       objectReference: {fileID: 0}
@@ -2953,6 +2842,10 @@ PrefabInstance:
     - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: playerShotCountEnhancement
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
+      propertyPath: playerShotIntervalLevelMax
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2932840973445811220, guid: 1e26a8efd3b0c71489126d12049b27f8, type: 3}
       propertyPath: playerShotSpeedEnhancement
@@ -2992,7 +2885,7 @@ GameObject:
   - component: {fileID: 2133970103}
   - component: {fileID: 2133970102}
   m_Layer: 5
-  m_Name: BoostShotIntervalText
+  m_Name: PlayerShotIntervalEnhancementButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

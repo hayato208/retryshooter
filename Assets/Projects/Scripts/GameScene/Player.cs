@@ -10,28 +10,19 @@ public class Player : MonoBehaviour
     public Shot m_shotPrefab; // 弾のプレハブ
 
     // Playerステータス
-    public float playerSpeed; // 移動の速さ
-    public float playerShotSpeed; // 弾の移動の速さ
-    public float playerShotAngleRange; // 複数の弾を発射する時の角度
-    public int playerShotCount; // 弾の発射数
-    public float playerShotInterval; // 弾の発射間隔（秒）
-    public int playerHpMax; // HP の最大値
-    public int playerHp; // HP
-    public int playerGold; // 所持ゴールド
+    public float playerShotSpeed; // Playerの弾の速度
+    public float playerShotInterval; // Playerの弾の発射間隔
+    public float playerSpeed; // Playerの移動の速さ
+    public int playerHpMax; // Playerの最大HP
+    public int playerShotCount; // Playerの弾の発射数
+    public float playerShotAngleRange; // Playerが複数の弾を発射する際の角度
+    public int playerGold; // Playerの所持ゴールド
+    public int playerHp; // 現在HP
     // Playerステータスここまで
 
     public float playerShotTimer; // 弾の発射タイミングを管理するタイマー
 
     public AudioClip m_damageClip; // ダメージを受けた時に再生する SE
-
-
-    // 戦闘時間
-    /*
-    static int minute; // 戦闘時間：分
-    static float seconds; // 戦闘時間：秒
-    */
-
-    // 戦闘時間ここまで
 
     public static Player m_instance; // プレイヤーのインスタンスを管理する static 変数
     public Explosion m_explosionPrefab; // 爆発エフェクトのプレハブ
@@ -53,23 +44,26 @@ public class Player : MonoBehaviour
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
         // StatusManagerデータ格納
-        playerSpeed = sm.playerSpeed;
         playerShotSpeed = sm.playerShotSpeed;
-        playerShotAngleRange = sm.playerShotAngleRange;
-        playerShotCount = sm.playerShotCount;
         playerShotInterval = sm.playerShotInterval;
+        playerSpeed = sm.playerSpeed;
         playerHpMax = sm.playerHpMax;
-        playerHp = sm.playerHp;
+        playerShotCount = sm.playerShotCount;
+        playerShotAngleRange = sm.playerShotAngleRange;
+
+        playerHp = sm.playerHpMax;
         playerGold = sm.playerGold;
 
         // HP,GOLD表示
-        m_HpText.text = "HP:" + playerHpMax;
+        m_HpText.text = "HP:" + playerHp;
         m_goldText.text = "GOLD:" + playerGold;
     }
 
     // 毎フレーム呼び出される関数
     private void Update()
     {
+        var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
+
         // ゲームを 60 FPS 固定にする
         Application.targetFrameRate = 60;
 
@@ -78,7 +72,7 @@ public class Player : MonoBehaviour
         var v = Input.GetAxis("Vertical");
 
         // 矢印キーが押されている方向にプレイヤーを移動する
-        var velocity = new Vector3(h, v) * playerSpeed;
+        var velocity = new Vector3(h, v) * sm.playerSpeed;
         transform.localPosition += velocity;
 
         // プレイヤーが画面外に出ないように位置を制限する
@@ -108,7 +102,7 @@ public class Player : MonoBehaviour
         playerShotTimer = 0;
 
         // 弾を発射する
-        ShootNWay(angle, playerShotAngleRange, playerShotSpeed, playerShotCount);
+        ShootNWay(angle, sm.playerShotAngleRange, sm.playerShotSpeed, playerShotCount);
     }
 
     // 弾を発射する関数
@@ -224,25 +218,12 @@ public class Player : MonoBehaviour
     {
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
-        // Playerステータス
-        /*
-        sm.m_speed = m_speed;
-        sm.m_shotSpeed = m_shotSpeed; // 弾の移動の速さ
-        sm.m_shotCount = m_shotCount; // 弾の発射数
-        sm.m_shotInterval = m_shotInterval; // 弾の発射間隔（秒）
-        sm.m_hpMax = m_hpMax; // HP の最大値
-        */
-        sm.playerSpeed=playerSpeed;
-        sm.playerShotSpeed=playerShotSpeed;
-        sm.playerGold = playerGold; 
-
-        // Playerステータスここまで
-        // 戦闘時間
-        /*
-        sm.minute; // 戦闘時間：分
-        sm.seconds; // 戦闘時間：秒
-        */
-        // 戦闘時間ここまで
+         sm.playerShotSpeed = playerShotSpeed;
+        sm.playerShotInterval = playerShotInterval;
+        sm.playerSpeed = playerSpeed;
+        sm.playerHpMax = playerHpMax;
+        sm.playerShotCount = playerShotCount;
+        sm.playerGold = playerGold;
 
         SceneManager.sceneLoaded -= GameSceneLoaded;
     }
