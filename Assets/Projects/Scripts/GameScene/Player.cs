@@ -10,33 +10,26 @@ public class Player : MonoBehaviour
     public Shot m_shotPrefab; // 弾のプレハブ
 
     // Playerステータス
-    public float m_speed; // 移動の速さ
-    public float m_shotSpeed; // 弾の移動の速さ
-    public float m_shotAngleRange; // 複数の弾を発射する時の角度
-    public float m_shotTimer; // 弾の発射タイミングを管理するタイマー
-    public int m_shotCount; // 弾の発射数
-    public float m_shotInterval; // 弾の発射間隔（秒）
-    public int m_hpMax; // HP の最大値
-    public int m_hp; // HP
-    public int m_gold; // 所持ゴールド
-    public AudioClip m_damageClip; // ダメージを受けた時に再生する SE
-
+    private float playerShotSpeed; // Playerの弾の速度
+    private float playerShotInterval; // Playerの弾の発射間隔
+    private float playerSpeed; // Playerの移動の速さ
+    private int playerHpMax; // Playerの最大HP
+    private int playerShotCount; // Playerの弾の発射数
+    private float playerShotAngleRange; // Playerが複数の弾を発射する際の角度
+    private int playerGold; // Playerの所持ゴールド
+    private int playerHp; // 現在HP
     // Playerステータスここまで
 
-    // 戦闘時間
-    /*
-    static int minute; // 戦闘時間：分
-    static float seconds; // 戦闘時間：秒
-    */
+    private float playerShotTimer; // 弾の発射タイミングを管理するタイマー
 
-    // 戦闘時間ここまで
+    public AudioClip m_damageClip; // ダメージを受けた時に再生する SE
 
     public static Player m_instance; // プレイヤーのインスタンスを管理する static 変数
     public Explosion m_explosionPrefab; // 爆発エフェクトのプレハブ
     [SerializeField]
-    private TextMeshProUGUI m_goldText; // ゴールド表示用
+    private TextMeshProUGUI PlayerGoldText; // ゴールド表示用
     [SerializeField]
-    private TextMeshProUGUI m_HpText; // HP表示用
+    private TextMeshProUGUI PlayerHpMaxText; // HP表示用
 
     // ゲーム開始時に呼び出される関数
     private void Awake()
@@ -48,19 +41,29 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        m_hp = m_hpMax;
-        m_HpText.text = "HP:" + m_hp;
+        var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
-        // 所持GOLD表示
-        m_goldText.text = "GOLD:" + m_gold;
+        // StatusManagerデータ格納
+        playerShotSpeed = sm.playerShotSpeed;
+        playerShotInterval = sm.playerShotInterval;
+        playerSpeed = sm.playerSpeed;
+        playerHpMax = sm.playerHpMax;
+        playerShotCount = sm.playerShotCount;
+        playerShotAngleRange = sm.playerShotAngleRange;
 
-        // AngleRangeの変数
-        m_shotAngleRange = 20;
+        playerHp = sm.playerHpMax;
+        playerGold = sm.playerGold;
+
+        // HP,GOLD表示
+        PlayerHpMaxText.text = "HP:" + playerHp;
+        PlayerGoldText.text = "GOLD:" + playerGold;
     }
 
     // 毎フレーム呼び出される関数
     private void Update()
     {
+        var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
+
         // ゲームを 60 FPS 固定にする
         Application.targetFrameRate = 60;
 
@@ -69,7 +72,7 @@ public class Player : MonoBehaviour
         var v = Input.GetAxis("Vertical");
 
         // 矢印キーが押されている方向にプレイヤーを移動する
-        var velocity = new Vector3(h, v) * m_speed;
+        var velocity = new Vector3(h, v) * sm.playerSpeed;
         transform.localPosition += velocity;
 
         // プレイヤーが画面外に出ないように位置を制限する
@@ -90,16 +93,16 @@ public class Player : MonoBehaviour
         transform.localEulerAngles = angles;
 
         // 弾の発射タイミングを管理するタイマーを更新する
-        m_shotTimer += Time.deltaTime;
+        playerShotTimer += Time.deltaTime;
 
         // まだ弾の発射タイミングではない場合は、ここで処理を終える
-        if (m_shotTimer < m_shotInterval) return;
+        if (playerShotTimer < playerShotInterval) return;
 
         // 弾の発射タイミングを管理するタイマーをリセットする
-        m_shotTimer = 0;
+        playerShotTimer = 0;
 
         // 弾を発射する
-        ShootNWay(angle, m_shotAngleRange, m_shotSpeed, m_shotCount);
+        ShootNWay(angle, sm.playerShotAngleRange, sm.playerShotSpeed, playerShotCount);
     }
 
     // 弾を発射する関数
@@ -154,25 +157,8 @@ public class Player : MonoBehaviour
             // 弾を削除する
             Destroy(collision.gameObject);
 
-            // プレイヤーの HP を減らす
-            m_hp--;
-
-            // HPを表示
-            m_HpText.text = "HP:" + m_hp;
-
-
-            // プレイヤーの HP がまだ残っている場合はここで処理を終える
-            if (0 < m_hp) return;
-
-            // プレイヤーが死亡したので非表示にする
-            // 本来であれば、ここでゲームオーバー演出を再生したりする
-            // gameObject.SetActive(false);
-
-            if (0 == m_hp)
-            {
-                // ScoreManagerコンポーネント取得
-                StatusScene();
-            }
+            // 弾のダメージは1固定
+            PlayerDamage(1);
         }
     }
 
@@ -184,25 +170,29 @@ public class Player : MonoBehaviour
         var audioSource = FindObjectOfType<AudioSource>();
         audioSource.PlayOneShot(m_damageClip);
 
+        PlayerDamage(damage);
+    }
+
+    public void PlayerDamage(int damage)
+    {
         // プレイヤーの HP を減らす
-        m_hp -= damage;
+        playerHp -= damage;
 
         // HPを表示
-        m_HpText.text = "HP:" + m_hp;
+        PlayerHpMaxText.text = "HP:" + playerHp;
 
         // HP がまだある場合、ここで処理を終える
-        if (0 < m_hp) return;
+        if (0 < playerHp) return;
 
         // プレイヤーが死亡したので非表示にする
         // 本来であれば、ここでゲームオーバー演出を再生したりする
         // gameObject.SetActive(false);
 
-        if (0 == m_hp)
+        if (0 == playerHp)
         {
             // ScoreManagerコンポーネント取得
             StatusScene();
         }
-
     }
 
     void StatusScene()
@@ -217,21 +207,12 @@ public class Player : MonoBehaviour
     {
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
-        // Playerステータス
-        sm.m_speed = m_speed;
-        sm.m_shotSpeed = m_shotSpeed; // 弾の移動の速さ
-        sm.m_shotCount = m_shotCount; // 弾の発射数
-        sm.m_shotInterval = m_shotInterval; // 弾の発射間隔（秒）
-        sm.m_hpMax = m_hpMax; // HP の最大値
-        sm.m_gold = m_gold; // 所持ゴールド
-
-        // Playerステータスここまで
-        // 戦闘時間
-        /*
-        sm.minute; // 戦闘時間：分
-        sm.seconds; // 戦闘時間：秒
-        */
-        // 戦闘時間ここまで
+        sm.playerShotSpeed = playerShotSpeed;
+        sm.playerShotInterval = playerShotInterval;
+        sm.playerSpeed = playerSpeed;
+        sm.playerHpMax = playerHpMax;
+        sm.playerShotCount = playerShotCount;
+        sm.playerGold = playerGold;
 
         SceneManager.sceneLoaded -= GameSceneLoaded;
     }
@@ -239,18 +220,18 @@ public class Player : MonoBehaviour
     public void AddGold(int gold)
     {
         // ゴールドを増やす
-        m_gold += gold;
+        playerGold += gold;
 
         // ゴールドを表示
-        m_goldText.text = "GOLD:" + m_gold;
+        PlayerGoldText.text = "GOLD:" + playerGold;
 
-        if (m_gold >= 10000)
+        if (playerGold >= 10000)
         {
             // Type == Time の場合
             int scoreTime = TimeManager.minute * 60 + (int)TimeManager.seconds;
 
             // Type == Number の場合
-             naichilab.RankingLoader.Instance.SendScoreAndShowRanking(scoreTime);
+            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(scoreTime);
 
             // ゲーム停止
             Time.timeScale = 0f;
@@ -259,7 +240,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp(int gold)
     {
-        m_gold = m_gold - gold;
+        playerGold = playerGold - gold;
 
     }
 }
