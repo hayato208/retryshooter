@@ -9,7 +9,7 @@ public class StatusScene : MonoBehaviour
 
     // Buttonテキスト
     public TextMeshProUGUI PlayerGoldText; // Gold表示用
-    public TextMeshProUGUI PlayerHpMax; // hp表示用
+    public TextMeshProUGUI PlayerHpMaxText; // hp表示用
     public TextMeshProUGUI PlayerShotSpeedButtonGoldText; // speedShotGold表示用
     public TextMeshProUGUI PlayerShotIntervalButtonGoldText; // shotIntervalGold表示用
     public TextMeshProUGUI PlayerSpeedButtonGoldText; // speedGold表示用
@@ -31,6 +31,6 @@ public class StatusScene : MonoBehaviour
 
         // HP,GOLD更新
         PlayerGoldText.text = "GOLD:" + sm.playerGold;
-        PlayerHpMax.text = "HP:" + sm.playerHpMax;
+        PlayerHpMaxText.text = "MAX HP:" + sm.playerHpMax;
     }
 }

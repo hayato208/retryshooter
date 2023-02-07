@@ -10,26 +10,26 @@ public class Player : MonoBehaviour
     public Shot m_shotPrefab; // 弾のプレハブ
 
     // Playerステータス
-    public float playerShotSpeed; // Playerの弾の速度
-    public float playerShotInterval; // Playerの弾の発射間隔
-    public float playerSpeed; // Playerの移動の速さ
-    public int playerHpMax; // Playerの最大HP
-    public int playerShotCount; // Playerの弾の発射数
-    public float playerShotAngleRange; // Playerが複数の弾を発射する際の角度
-    public int playerGold; // Playerの所持ゴールド
-    public int playerHp; // 現在HP
+    private float playerShotSpeed; // Playerの弾の速度
+    private float playerShotInterval; // Playerの弾の発射間隔
+    private float playerSpeed; // Playerの移動の速さ
+    private int playerHpMax; // Playerの最大HP
+    private int playerShotCount; // Playerの弾の発射数
+    private float playerShotAngleRange; // Playerが複数の弾を発射する際の角度
+    private int playerGold; // Playerの所持ゴールド
+    private int playerHp; // 現在HP
     // Playerステータスここまで
 
-    public float playerShotTimer; // 弾の発射タイミングを管理するタイマー
+    private float playerShotTimer; // 弾の発射タイミングを管理するタイマー
 
     public AudioClip m_damageClip; // ダメージを受けた時に再生する SE
 
     public static Player m_instance; // プレイヤーのインスタンスを管理する static 変数
     public Explosion m_explosionPrefab; // 爆発エフェクトのプレハブ
     [SerializeField]
-    private TextMeshProUGUI m_goldText; // ゴールド表示用
+    private TextMeshProUGUI PlayerGoldText; // ゴールド表示用
     [SerializeField]
-    private TextMeshProUGUI m_HpText; // HP表示用
+    private TextMeshProUGUI PlayerHpMaxText; // HP表示用
 
     // ゲーム開始時に呼び出される関数
     private void Awake()
@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
         playerGold = sm.playerGold;
 
         // HP,GOLD表示
-        m_HpText.text = "HP:" + playerHp;
-        m_goldText.text = "GOLD:" + playerGold;
+        PlayerHpMaxText.text = "HP:" + playerHp;
+        PlayerGoldText.text = "GOLD:" + playerGold;
     }
 
     // 毎フレーム呼び出される関数
@@ -157,24 +157,8 @@ public class Player : MonoBehaviour
             // 弾を削除する
             Destroy(collision.gameObject);
 
-            // プレイヤーの HP を減らす
-            playerHp--;
-
-            // HPを表示
-            m_HpText.text = "HP:" + playerHp;
-
-            // プレイヤーの HP がまだ残っている場合はここで処理を終える
-            if (0 < playerHp) return;
-
-            // プレイヤーが死亡したので非表示にする
-            // 本来であれば、ここでゲームオーバー演出を再生したりする
-            // gameObject.SetActive(false);
-
-            if (0 == playerHp)
-            {
-                // ScoreManagerコンポーネント取得
-                StatusScene();
-            }
+            // 弾のダメージは1固定
+            PlayerDamage(1);
         }
     }
 
@@ -186,11 +170,16 @@ public class Player : MonoBehaviour
         var audioSource = FindObjectOfType<AudioSource>();
         audioSource.PlayOneShot(m_damageClip);
 
+        PlayerDamage(damage);
+    }
+
+    public void PlayerDamage(int damage)
+    {
         // プレイヤーの HP を減らす
         playerHp -= damage;
 
         // HPを表示
-        m_HpText.text = "HP:" + playerHp;
+        PlayerHpMaxText.text = "HP:" + playerHp;
 
         // HP がまだある場合、ここで処理を終える
         if (0 < playerHp) return;
@@ -218,7 +207,7 @@ public class Player : MonoBehaviour
     {
         var sm = GameObject.Find("StatusManager").GetComponent<StatusManager>();
 
-         sm.playerShotSpeed = playerShotSpeed;
+        sm.playerShotSpeed = playerShotSpeed;
         sm.playerShotInterval = playerShotInterval;
         sm.playerSpeed = playerSpeed;
         sm.playerHpMax = playerHpMax;
@@ -234,7 +223,7 @@ public class Player : MonoBehaviour
         playerGold += gold;
 
         // ゴールドを表示
-        m_goldText.text = "GOLD:" + playerGold;
+        PlayerGoldText.text = "GOLD:" + playerGold;
 
         if (playerGold >= 10000)
         {
